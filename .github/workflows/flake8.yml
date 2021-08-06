@@ -15,14 +15,9 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
-          python-version: "3.9"
+          python-version: "3.x"
 
-      - name: Install dependencies
+      - name: Install dependencies and run Flake8
         run: |
-          python -VV
-          python -m site
-          python -m pip install --upgrade pip setuptools wheel
-          python -m pip install tox
-
-      - name: Run Flake8
-        run: "python -m tox -e lint -- --format github"
+          python -m pip install flake8
+          flake8
