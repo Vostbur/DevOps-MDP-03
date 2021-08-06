@@ -1,5 +1,5 @@
 ---
-name: Run unittests
+name: unittests
 on: [push, pull_request]
   
 jobs:
