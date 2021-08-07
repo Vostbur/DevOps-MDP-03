@@ -10,7 +10,7 @@ Master Skills:
 
 Written with Django. Command to run `python manage.py runserver`
 
-![](./web-interface-maprequest-api.PNG)
+<img src="web-interface-maprequest-api.PNG" alt="drawing" width="939"/>
 
 ## Get a MapQuest API Key and save it for using as an environment variable
 
