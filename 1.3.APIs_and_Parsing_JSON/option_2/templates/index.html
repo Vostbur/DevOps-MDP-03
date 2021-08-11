@@ -23,12 +23,23 @@
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="inputCurrentLocation">Your current location</label>
-          <input name="current_location" type="text" class="form-control" id="inputCurrentLocation" required>
+          <input name="current_location" type="text" class="form-control" id="inputCurrentLocation" disabled>
           <div class="invalid-feedback">
             Missing an entry for the current location
           </div>
         </div>
 			</div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <div class="form-check">
+            <input type="checkbox" name="autodetect_location" value="ok"
+                   class="form-check-input" id="inputAutodetect"
+                   onchange="document.getElementById('inputCurrentLocation').disabled = this.checked;"
+                   checked>
+            <label class="form-check-label" for="inputAutodetect">Automatic location detection</label>
+          </div>
+        </div>
+      </div>
       <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputTargetLocation">Target location</label>
@@ -41,12 +52,17 @@
 			<input class="btn btn-primary" type="submit" value="Generate">
 
       <hr>
-      {% if text %}
-      <div class="form-group">
-        <label for="textareaText"><strong>Result</strong></label>
-        <textarea class="form-control" id="textareaText" rows="23">{{ text }}</textarea>
-      </div>
-
+      {% if error %}
+        <h3 class="alert alert-danger">
+          {{ error }}
+        </h3>
+      {% elif current_location %}
+        <h3 class="alert alert-success">
+          You are in the city of {{ current_location }}.<br/>
+          According to your local time in {{ target_location }}:<br/>
+          the sun rises at {{ sunrise }} o'clock<br/>
+          sets at {{ sunset}} o'clock.
+        </h3>
       {% endif %}
     </form>
 

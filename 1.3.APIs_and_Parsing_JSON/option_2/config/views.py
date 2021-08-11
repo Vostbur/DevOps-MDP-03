@@ -4,15 +4,23 @@ import requests
 
 from django.shortcuts import render
 
-from config.settings import MAPQUESTAPI_KEY, ABSTRACTAPI_KEY
+from config.settings import MAPQUESTAPI_KEY, ABSTRACTAPI_KEY, ABSTRACTAPI_GEO_KEY
 
 
 def index(request):
-    output_text = ''
-
     if request.method == 'POST':
-
         base_location = request.POST.get("current_location")
+        if base_location is None:
+            location_by_IP_api = "https://ipgeolocation.abstractapi.com/v1/?"
+            location_by_IP_url = location_by_IP_api + urllib.parse.urlencode(
+                {"api_key": ABSTRACTAPI_GEO_KEY}
+            )
+            json_data = requests.get(location_by_IP_url).json()
+            if "error" in json_data:
+                error = f"{json_data['error']['message']}: {json_data['error']['details']}"
+                render(request, 'index.html', {'error': error})
+            base_location = f"{json_data['city']}, {json_data['country']}"
+
         target_location = request.POST.get("target_location")
 
         # get lat and lng from address
@@ -28,8 +36,8 @@ def index(request):
             lat = json_data["results"][0]["locations"][0]["latLng"]["lat"]
             lng = json_data["results"][0]["locations"][0]["latLng"]["lng"]
         else:
-            output_text = f"Status Code: {json_status}; Refer to: {json_data['info']['messages'][0]}"
-            render(request, 'index.html', {'text': output_text})
+            error = f"Status Code: {json_status}; Refer to: {json_data['info']['messages'][0]}"
+            render(request, 'index.html', {'error': error})
 
         # get sunrise and sunset
         sun_api = "https://api.sunrise-sunset.org/json?"
@@ -44,17 +52,17 @@ def index(request):
             sunrise_iso8601 = json_data["results"]["sunrise"]
             sunset_iso8601 = json_data["results"]["sunset"]
         elif json_status == "INVALID_REQUEST":
-            output_text = "Either lat or lng parameters are missing or invalid"
-            render(request, 'index.html', {'text': output_text})
+            error = "Either lat or lng parameters are missing or invalid"
+            render(request, 'index.html', {'error': error})
         elif json_status == "INVALID_DATE":
-            output_text = "Date parameter is missing or invalid"
-            render(request, 'index.html', {'text': output_text})
+            error = "Date parameter is missing or invalid"
+            render(request, 'index.html', {'error': error})
         elif json_status == "UNKNOWN_ERROR":
-            output_text = "Request could not be processed due to a server error. Please try again."
-            render(request, 'index.html', {'text': output_text})
+            error = "Request could not be processed due to a server error. Please try again."
+            render(request, 'index.html', {'error': error})
         else:
-            output_text = "Unknown error occurred!"
-            render(request, 'index.html', {'text': output_text})
+            error = "Unknown error occurred!"
+            render(request, 'index.html', {'error': error})
 
         # sunrise
         sunrise_datetime = datetime.datetime.strptime(sunrise_iso8601, "%Y-%m-%dT%H:%M:%S%z")
@@ -71,13 +79,11 @@ def index(request):
         json_data = requests.get(convert_time_url).json()
 
         if "error" in json_data:
-            output_text = f"{json_data['error']['message']}: {json_data['error']['details']}"
-            render(request, 'index.html', {'text': output_text})
-
-        output_text += f"Sunrise: {json_data['target_location']['datetime']}"
+            error = f"{json_data['error']['message']}: {json_data['error']['details']}"
+            render(request, 'index.html', {'error': error})
 
         # sunset
-        sunset_datetime = datetime.strptime(sunset_iso8601, "%Y-%m-%dT%H:%M:%S%z")
+        sunset_datetime = datetime.datetime.strptime(sunset_iso8601, "%Y-%m-%dT%H:%M:%S%z")
         sunset = sunset_datetime.strftime("%Y-%m-%d %H:%M:%S")
 
         convert_time_api = "https://timezone.abstractapi.com/v1/convert_time?"
@@ -91,8 +97,13 @@ def index(request):
         json_data = requests.get(convert_time_url).json()
 
         if "error" in json_data:
-            output_text = f"{json_data['error']['message']}: {json_data['error']['details']}"
-            render(request, 'index.html', {'text': output_text})
+            error = f"{json_data['error']['message']}: {json_data['error']['details']}"
+            render(request, 'index.html', {'error': error})
 
-        output_text += f"Sunset: {json_data['target_location']['datetime']}"
-    return render(request, 'index.html', {'text': output_text})
+        return render(request, 'index.html', {
+            'current_location': base_location,
+            'target_location': target_location,
+            'sunrise': sunrise,
+            'sunset': sunset
+        })
+    return render(request, 'index.html')
