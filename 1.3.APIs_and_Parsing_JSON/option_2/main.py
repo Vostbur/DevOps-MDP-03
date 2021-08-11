@@ -72,7 +72,7 @@ else:
     sys.exit(0)
 
 # convert from UTC to local time
-abstractapi_key = os.getenv("ABSTRACTAPI_KET")
+abstractapi_key = os.getenv("ABSTRACTAPI_KEY")
 
 # sunrise
 sunrise_datetime = datetime.strptime(sunrise_iso8601, "%Y-%m-%dT%H:%M:%S%z")

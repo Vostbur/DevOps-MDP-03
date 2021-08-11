@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <title>Sunrise and sunset times around the world</title>
+</head>
+
+<body>
+  <div class="container text-left col-md-6">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Sunrise and sunset times around the world</h2>
+        <hr>
+      </div>
+    </div>
+
+    <form class="needs-validation" method="post" novalidate>
+      {% csrf_token %}
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputCurrentLocation">Your current location</label>
+          <input name="current_location" type="text" class="form-control" id="inputCurrentLocation" required>
+          <div class="invalid-feedback">
+            Missing an entry for the current location
+          </div>
+        </div>
+			</div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputTargetLocation">Target location</label>
+            <input name="target_location" type="text" class="form-control" id="inputTargetLocation" required>
+            <div class="invalid-feedback">
+              Missing an entry for the target location
+            </div>
+        </div>
+			</div>
+			<input class="btn btn-primary" type="submit" value="Generate">
+
+      <hr>
+      {% if text %}
+      <div class="form-group">
+        <label for="textareaText"><strong>Result</strong></label>
+        <textarea class="form-control" id="textareaText" rows="23">{{ text }}</textarea>
+      </div>
+
+      {% endif %}
+    </form>
+
+  </div>
+
+  <script>
+    (function() {
+      'use strict';
+      window.addEventListener('load', function() {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+  </script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+</body>
+</html>
