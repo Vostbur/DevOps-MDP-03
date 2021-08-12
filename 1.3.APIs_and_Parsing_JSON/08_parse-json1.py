@@ -14,5 +14,7 @@ dest = "Baltimaore"
 key = os.getenv("MAPQUESTAPI_CONSUMER_KEY")
 
 url = main_api + urllib.parse.urlencode({"key": key, "from": orig, "to": dest})
-json_data = requests.get(url).json()
+# json_data = requests.get(url).json()
+json_data = requests.get("https://www.mapquestapi.com/directions/v2/route",
+                         params={"key": key, "from": orig, "to": dest}).json()
 print(json_data)
