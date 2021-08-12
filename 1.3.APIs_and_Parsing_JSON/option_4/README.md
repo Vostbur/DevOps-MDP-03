@@ -12,4 +12,4 @@ Backend: Django Rest Framework
 
 Frontend: ReactJS with Bootstrap
 
-![](https://github.com/Vostbur/daily-tasks-drf/raw/master/react-app-daily-tasks.png)
+<img src="https://github.com/Vostbur/daily-tasks-drf/raw/master/react-app-daily-tasks.png" width="640"/>
