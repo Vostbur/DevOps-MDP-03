@@ -8,6 +8,9 @@ requests = "*"
 python-dotenv = "*"
 django = "*"
 flask = "*"
+netmiko = "*"
+ncclient = "*"
+xmltodict = "*"
 
 [dev-packages]
 flake8 = "*"

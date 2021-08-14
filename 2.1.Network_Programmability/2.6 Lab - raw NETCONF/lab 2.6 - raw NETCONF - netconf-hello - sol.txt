@@ -1,0 +1,32 @@
+ssh 192.168.56.101 -p 830 -l cisco
+
+
+
+<hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+ <capabilities>
+   <capability>urn:ietf:params:netconf:base:1.0</capability>
+ </capabilities>
+</hello>
+]]>]]>
+
+
+
+
+
+<rpc message-id="103" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+ <get>
+  <filter>
+    <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces"/>
+   </filter>
+ </get>
+</rpc>
+]]>]]>
+
+
+
+
+
+<rpc message-id="9999999" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+ <close-session />
+</rpc>
+]]>]]>

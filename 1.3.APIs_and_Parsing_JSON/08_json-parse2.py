@@ -23,3 +23,16 @@ json_status = json_data["info"]["statuscode"]
 
 if json_status == 0:
     print("API Status: " + str(json_status) + " = A successful route call.\n")
+
+'''
+DELETE
+print(json_data)
+'''
+
+'''
+OUTPUT:
+URL: https://www.mapquestapi.com/directions/v2/route?key=your_api_key&to=Baltimore&from=Washington
+API Status: 0 = A successful route call.
+
+>>>
+'''

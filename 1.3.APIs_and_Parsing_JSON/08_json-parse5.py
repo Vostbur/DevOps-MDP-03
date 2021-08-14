@@ -30,3 +30,19 @@ while True:
         print("Trip Duration:   " + (json_data["route"]["formattedTime"]))
         print("Kilometers:      " + str("{:.2f}".format((json_data["route"]["distance"]) * 1.61)))
         print("Fuel Used (Ltr): " + str("{:.2f}".format((json_data["route"]["fuelUsed"]) * 3.78)))
+
+'''
+OUTPUT
+Starting Location: Washington
+Destination: Baltimore
+URL: https://www.mapquestapi.com/directions/v2/route?key=your_api_key&to=Baltimore&from=Washington
+API Status: 0 = A successful route call.
+
+Directions from Washington to Baltimore
+Trip Duration:   00:49:19
+Kilometers:      61.32
+Fuel Used (Ltr): 6.24
+=============================================
+Starting Location: q
+>>>
+'''

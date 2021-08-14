@@ -34,3 +34,37 @@ while True:
         for each in json_data["route"]["legs"][0]["maneuvers"]:
             print((each["narrative"]) + " (" + str("{:.2f}".format((each["distance"]) * 1.61) + " km)"))
         print("=============================================\n")
+
+'''
+OUTPUT
+Starting Location: Washington
+Destination: Baltimore
+URL: https://www.mapquestapi.com/directions/v2/route?key=your_api_key&to=Baltimore&from=Washington
+API Status: 0 = A successful route call.
+
+Directions from Washington to Baltimore
+Trip Duration:   00:49:19
+Kilometers:      61.32
+Fuel Used (Ltr): 6.24
+=============================================
+Start out going north on 6th St/US-50 E/US-1 N toward Pennsylvania Ave/US-1 Alt N. (1.28 km)
+Turn right onto New York Ave/US-50 E. Continue to follow US-50 E (Crossing into Maryland). (7.51 km)
+Take the Balt-Wash Parkway exit on the left toward Baltimore. (0.88 km)
+Merge onto MD-295 N. (50.38 km)
+Turn right onto W Pratt St. (0.86 km)
+Turn left onto S Calvert St/MD-2. (0.43 km)
+Welcome to BALTIMORE, MD. (0.00 km)
+=============================================
+
+Starting Location: Washington
+Destination: Beijing
+URL: https://www.mapquestapi.com/directions/v2/route?to=Beijing&key=your_api_key&from=Washington
+Starting Location: Washington
+Destination: Balt
+URL: https://www.mapquestapi.com/directions/v2/route?to=Balt&key=your_api_key&from=Washington
+Starting Location: Washington
+Destination:
+URL: https://www.mapquestapi.com/directions/v2/route?to=&key=your_api_key&from=Washington
+Starting Location: q
+>>>
+'''

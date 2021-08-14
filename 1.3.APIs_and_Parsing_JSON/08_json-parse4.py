@@ -26,3 +26,22 @@ while True:
 
     if json_status == 0:
         print("API Status: " + str(json_status) + " = A successful route call.\n")
+
+'''
+OUTPUT
+>>>
+ RESTART: /home/user/08_parse-json4_sol.py
+Starting Location: q
+>>>
+ RESTART: /home/user/08_parse-json4_sol.py
+Starting Location: quit
+>>>
+ RESTART: /home/user/08_parse-json4_sol.py
+Starting Location: Washington
+Destination: q
+>>>
+ RESTART: /home/user/08_parse-json4_sol.py
+Starting Location: Washington
+Destination: quit
+>>>
+'''

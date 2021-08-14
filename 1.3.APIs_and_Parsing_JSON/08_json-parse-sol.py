@@ -47,3 +47,73 @@ while True:
         print("Status Code: " + str(json_status) + "; Refer to:")
         print("https://developer.mapquest.com/documentation/directions-api/status-codes")
         print("************************************************************************\n")
+
+'''
+Starting Location: Washington
+Destination: Baltimore
+URL: https://www.mapquestapi.com/directions/v2/route?key=your_api_key&from=Washington&to=Baltimore
+API Status: 0 = A successful route call.
+
+Directions from Washington to Baltimore
+Trip Duration:   00:49:19
+Kilometers:      61.32
+Fuel Used (Ltr): 6.24
+=============================================
+Start out going north on 6th St/US-50 E/US-1 N toward Pennsylvania Ave/US-1 Alt N. (1.28 km)
+Turn right onto New York Ave/US-50 E. Continue to follow US-50 E (Crossing into Maryland). (7.51 km)
+Take the Balt-Wash Parkway exit on the left toward Baltimore. (0.88 km)
+Merge onto MD-295 N. (50.38 km)
+Turn right onto W Pratt St. (0.86 km)
+Turn left onto S Calvert St/MD-2. (0.43 km)
+Welcome to BALTIMORE, MD. (0.00 km)
+=============================================
+
+Starting Location: Moscow
+Destination: Beijing
+URL: https://www.mapquestapi.com/directions/v2/route?key=your_api_key&from=Moscow&to=Beijing
+API Status: 0 = A successful route call.
+
+Directions from Moscow to Beijing
+Trip Duration:   84:31:10
+Kilometers:      7826.83
+Fuel Used (Ltr): 793.20
+=============================================
+Start out going west on Кремлёвская набережная/Kremlin Embankment. (0.37 km)
+Turn slight right onto ramp. (0.15 km)
+Turn slight right onto Боровицкая площадь. (0.23 km)
+[output omitted]
+Turn left onto 广场东侧路/E. Guangchang Rd. (0.82 km)
+广场东侧路/E. Guangchang Rd becomes 东长安街/E. Chang'an Str. (0.19 km)
+Welcome to BEIJING. (0.00 km)
+=============================================
+
+Starting Location: Washington
+Destination: Beijing
+URL: https://www.mapquestapi.com/directions/v2/route?key=your_api_key&from=\
+    WashingtonTurn+right+onto+%E5%89%8D%E9%97%A8%E8%A5%BF%E5%A4%A7%E8%A1%97%2FQianmen+West+Street.+%281.01+km%29&to=Beijing
+
+****************************************************************
+Staus Code: 402; Invalid user inputs for one or both locations.
+****************************************************************
+
+Starting Location: Washington
+Destination: Balt
+URL: https://www.mapquestapi.com/directions/v2/route?key=your_api_key&from=Washington&to=Balt
+
+************************************************************************
+Staus Code: 602; Refer to:
+https://developer.mapquest.com/documentation/directions-api/status-codes
+************************************************************************
+
+Starting Location: Washington
+Destination:
+URL: https://www.mapquestapi.com/directions/v2/route?key=your_api_key&from=Washington&to=
+
+************************************************************************
+Staus Code: 611; Refer to:
+https://developer.mapquest.com/documentation/directions-api/status-codes
+************************************************************************
+
+Starting Location: q
+>>>
+'''

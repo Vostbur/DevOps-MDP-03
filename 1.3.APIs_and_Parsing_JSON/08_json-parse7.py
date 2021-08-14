@@ -43,3 +43,35 @@ while True:
         print("Status Code: " + str(json_status) + "; Refer to:")
         print("https://developer.mapquest.com/documentation/directions-api/status-codes")
         print("************************************************************************\n")
+
+'''
+OUTPUT
+Starting Location: Washington
+Destination: Beijing
+URL: https://www.mapquestapi.com/directions/v2/route?from=Washington&to=Beijing&key=your_api_key
+
+****************************************************************
+Staus Code: 402; Invalid user inputs for one or both locations.
+****************************************************************
+
+Starting Location: Washington
+Destination: Balt
+URL: https://www.mapquestapi.com/directions/v2/route?from=Washington&to=Balt&key=your_api_key
+
+************************************************************************
+Staus Code: 602; Refer to:
+https://developer.mapquest.com/documentation/directions-api/status-codes
+************************************************************************
+
+Starting Location: Washington
+Destination:
+URL: https://www.mapquestapi.com/directions/v2/route?from=Washington&to=&key=your_api_key
+
+************************************************************************
+Staus Code: 611; Refer to:
+https://developer.mapquest.com/documentation/directions-api/status-codes
+************************************************************************
+
+Starting Location: q
+>>>
+'''

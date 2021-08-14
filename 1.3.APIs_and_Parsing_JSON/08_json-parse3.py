@@ -22,3 +22,14 @@ while True:
 
     if json_status == 0:
         print("API Status: " + str(json_status) + " = A successful route call.\n")
+
+'''
+OUTPUT
+Starting Location: Washington
+Destination: Baltimore
+URL: https://www.mapquestapi.com/directions/v2/route?from=Washington&key=your_api_key&to=Baltimore
+API Status: 0 = A successful route call.
+
+Starting Location: <Ctrl+C>
+>>>
+'''
