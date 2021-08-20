@@ -1,9 +1,5 @@
 # Use a NETCONF Session to Gather Information
 
-## !! For some reason doesn't work with IOS XE 17.3.1 (DevNet IOS XE on CSR Latest Code Always On Sandbox Device)
-
----
-
 ## Step 1:  Check if NETCONF is running on the CSR1kv.
 
 NETCONF may already be running if another student enabled it, or if a later IOS version enables it by default. From your SSH session with the CSR1kv, use the show platform software yang-management process command to see if the NETCONF SSH daemon (**ncsshd**) is running.

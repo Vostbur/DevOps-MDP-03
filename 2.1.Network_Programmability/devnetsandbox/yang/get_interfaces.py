@@ -4,10 +4,8 @@ import xml.dom.minidom
 
 from ncclient import manager
 
-from device_info import ios_xe_16_9_4 as ios_xe
-
-# Doesn't work with IOS XE 17.3.1 !!!
-# from device_info import ios_xe_17_3_1 as ios_xe
+# from device_info import ios_xe_16_9_4 as ios_xe
+from device_info import ios_xe_17_3_1 as ios_xe
 
 netconf_filter = 'get_interfaces.xml'
 
